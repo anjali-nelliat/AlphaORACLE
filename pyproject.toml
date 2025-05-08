@@ -1,0 +1,23 @@
+[project]
+name = "AlphaORACLE"
+version = "0.1.0"
+description = "A classifier for filtering out false positives from high-throughput AlphaPulldown screens"
+authors = [{ name = "Anjali Nelliat", email = "anjali.nelliat@gmail.com" }]
+requires-python = "==3.11"
+license = { text = "MIT" }
+
+dependencies = [
+    "biopython",
+    "joblib",
+    "matplotlib",
+    "numpy",
+    "optuna",
+    "pandas",
+    "scikit-learn",
+    "seaborn",
+    "tqdm",
+    "typer"
+]
+
+[project.scripts]
+alphaoracle = "alphaoracle.cli:main"
