@@ -27,7 +27,7 @@ High-throughput AlphaFold-Multimer screens contain an abundance of false positiv
 
 ![AlphaORACLE_overview](images/AlphaORACLE_overview.png)
 
-- In Step 1, individual networks are passed through their own GAT encoders and where network-specific protein features are learned based the network topologies. These features are passed through the encoder 3 times to produce protein features which incorporate higher-order neighborhoods. These features are then summed to produce integrated protein features which capture topological information across input networks. 
+- In Step 1, individual networks are passed through their own GAT encoders and where network-specific protein features are learned based the network topologies. These features are passed through the encoder 3 times to produce protein features which incorporate higher-order neighborhoods. These features are then summed to produce integrated protein features which capture topological information across input networks. The training loss function attempts to minimize the difference between the input networks and the reconstructions of these networks using the integrated embeddings.
 
 - In Step 2, the integrated features from yeast and human networks are used to obtain protein-pair representations and combined with 2 additional features from AlphaFold-predicted structures for the protein-pairs predicted structures i.e the AlphaFold interface predicted Template Modeling score (ipTM) and a metric for the average per-contact conservation across the top 3 ranked AlphaFold-Multimer models (avg_n_models). These features are concatenated and supplied to a Multi-Layer Perceptron (MLP) for classifying true and false positive PPIs. For every protein pair, the output is the probability of interaction.
 
