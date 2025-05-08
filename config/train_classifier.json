@@ -1,0 +1,35 @@
+{
+  "# Data paths": "Configure input data file locations",
+  "ortholog_mapping_path": "AlphaORACLE/inputs/Ortholog_mapping.csv",
+  "human_embeddings_path": "AlphaORACLE/inputs/embeddings/human_features.csv",
+  "yeast_embeddings_path": "AlphaORACLE/inputs/embeddings/yeast_features.csv",
+  "af_scores_path": "AlphaORACLE/inputs/classifier_training/training_iptm.csv",
+  "avg_n_models_path": "AlphaORACLE/inputs/classifier_training/training_avg_models.csv",
+  "training_data_path": "AlphaORACLE/inputs/classifier_training/training_data.csv",
+  
+  "# Hyperparameter optimization": "Configure Optuna optimization settings",
+  "n_trials": 30,
+  "timeout": 7200,
+  
+  "# Training parameters": "Configure model training",
+  "epochs": 30,
+  "patience": 10,
+  "train_test_split_ratio": 0.25,
+  "train_val_split_ratio": 0.25,
+  "random_seed": 42,
+  
+  "# Output configuration": "Configure output file locations",
+  "output_dir": "./outputs",
+  "model_file": "optimized_interaction_classifier.pt",
+  "study_file": "optuna_study.pkl",
+  "predictions_file": "optimized_test_predictions.csv",
+  "performance_plot": "model_performance.png",
+  "optimization_history_plot": "optimization_history.png",
+  "param_importances_plot": "param_importances.png",
+  "training_history_plot": "training_history.png",
+  
+  
+  "# Advanced model settings": "Configure advanced parameters",
+  "human_dim": 1024,
+  "yeast_dim": 512
+}

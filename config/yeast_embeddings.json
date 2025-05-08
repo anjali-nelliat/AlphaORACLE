@@ -1,0 +1,20 @@
+{
+  "input_names": [
+    "AlphaORACLE/inputs/networks/cellmap_similarity.txt",
+    "AlphaORACLE/inputs/networks/cellmap_negative.txt",
+    "AlphaORACLE/inputs/networks/mann.txt",
+    "AlphaORACLE/inputs/networks/biogrid_yeast.txt"
+  ],
+  "output_name": "AlphaORACLE/inputs/embeddings/yeast_features.csv",
+  "epochs": 2219,
+  "batch_size": 2048,
+  "learning_rate": 0.000555263541672735,
+  "gat_shapes": {
+    "dimension": 72,
+    "n_heads": 10,
+    "n_layers": 3
+  },
+  "embedding_size": 512,
+  "save_model": false,
+  "save_loss_data": true
+}

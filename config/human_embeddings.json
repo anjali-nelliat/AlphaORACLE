@@ -1,0 +1,20 @@
+{
+  "input_names": [
+    "AlphaORACLE/inputs/networks/opencell.txt",
+    "AlphaORACLE/inputs/networks/depmap.txt",
+    "AlphaORACLE/inputs/networks/perturbseq.txt",
+    "AlphaORACLE/inputs/networks/biogrid_human.txt"
+  ],
+  "output_name": "AlphaORACLE/inputs/embeddings/human_features.csv",
+  "epochs": 2160,
+  "batch_size": 2048,
+  "learning_rate": 0.000505437079981283,
+  "gat_shapes": {
+    "dimension": 81,
+    "n_heads": 10,
+    "n_layers": 3
+  },
+  "embedding_size": 1024,
+  "save_model": false,
+  "save_loss_data": true
+}

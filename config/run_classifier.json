@@ -1,0 +1,14 @@
+{
+  "ortholog_mapping_path": "AlphaORACLE/inputs/Ortholog_mapping.csv",
+  "human_embeddings_path": "AlphaORACLE/inputs/embeddings/human_features.csv",
+  "yeast_embeddings_path": "AlphaORACLE/inputs/embeddings/yeast_features.csv",
+  "af_scores_path": "test/AF_scores.csv",
+  "avg_n_models_path": "test/avg_n_models.csv",
+  "input_csv": "test/protein_pairs_to_predict.csv",
+  "model_path": "AlphaORACLE/inputs/optimized_interaction_classifier.pt",
+  "output_path": "AlphaORACLE/test/predictions.csv",
+  "output_dir": "AlphaORACLE/test/prediction_results",
+  "yeast_dim": 512,
+  "human_dim": 1024,
+  "batch_size": 32
+}

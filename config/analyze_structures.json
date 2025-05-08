@@ -1,0 +1,9 @@
+{
+  "mode": "batch",
+  "parent_dir": "path/to/parent/directory",
+  "output_file": "contacts_summary.csv",
+  "detailed": false,
+  "cutoff": 8.0,
+  "pdb_prefix": "ranked_",
+  "pdb_indices": [0, 1, 2]
+}
