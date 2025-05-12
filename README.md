@@ -6,7 +6,7 @@
 [![DOI]()]()
 --->
 
-AlphaORACLE (**Alpha**Fold and **O**rtholog-**R**einforced **A**ttention-**C**lassifier for **L**ink **E**valuation ) is a deep learning classifier for predicting true protein-protein interactions (PPIs) from high-throughput AlphaFold-Multimer screens.
+AlphaORACLE (**Alpha**Fold and **O**rtholog-**R**einforced **A**ttention-**C**lassifier for **L**ink **E**valuation ) is a deep learning classifier for predicting true positive protein-protein interactions (PPIs) from high-throughput AlphaFold-Multimer screens.
 
 
 <!---
