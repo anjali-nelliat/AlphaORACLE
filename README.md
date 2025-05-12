@@ -78,13 +78,13 @@ The configuration keys are as follows:
 
 Argument | Default | Description
 --- | :---: | ---
-`ortholog_mapping_path` | `"AlphaORACLE/inputs/Ortholog_mapping.csv"` | Path to yeast-human ortholog mapping file.
-`human_embeddings_path` | `"AlphaORACLE/inputs/embeddings/human_features.csv"` | Path to human embeddings file.
-`yeast_embeddings_path` | `"AlphaORACLE/inputs/embeddings/yeast_features.csv"`  | Path to yeast embeddings file.
+`ortholog_mapping_path` | `"Ortholog_mapping.csv"` | Path to yeast-human ortholog mapping file.
+`human_embeddings_path` | `"human_features.csv"` | Path to human embeddings file.
+`yeast_embeddings_path` | `"yeast_features.csv"`  | Path to yeast embeddings file.
 `af_scores_path` | `None` | Path to AlphaFold iptm file.
 `avg_n_models_path` | `None` | Path to average models file.
 `input_csv` | `None` | Path to input CSV with protein pairs to predict.
-`model_path` | `"AlphaORACLE/inputs/optimized_interaction_classifier.pt"` | Path to trained model.
+`model_path` | `"optimized_interaction_classifier.pt"` | Path to trained model.
 `output_path` | `"interaction_predictions.csv"` | Filepath to save predictions.
 `output_dir` | `"./prediction_output"` | Directory to save outputs
 `yeast_dim` | `512` | Dimension of yeast protein embeddings.
