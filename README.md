@@ -98,7 +98,7 @@ In addition to certain user-supplied input files described below, the classifier
 - The human and yeast embeddings files `embeddings/human_features.csv` and `embeddings/yeast_features.csv` (**NOTE**: These files are too large for GitHub and are downloadable from [Google Drive link to Embeddings](https://drive.google.com/drive/folders/16fARUVTF3G2r76Dt1vwI3bty4MWi_l0x?usp=drive_link))
 
 The 3 required input files supplied by the user are:
-1. A csv file of of pairs of interactions to predict. The file consists of 2 columns of Uniprot IDs  with headers Protein1 and Protein2. For example,
+1. A csv file of the pairs of interactions to predict. The file consists of 2 columns of Uniprot IDs  with headers Protein1 and Protein2. For example,
 ```
 Protein1,Protein2
 P40227,Q9BUK6
