@@ -15,11 +15,11 @@ AlphaORACLE (**Alpha**Fold and **O**rtholog-**R**einforced **A**ttention-**C**la
 
 [TOC]: #
 ## Table of Contents
-- [Introduction](#motivation)
+- [Introduction](#introduction)
 - [Installation](#installation)
 - [Usage](#usage)
-  - [Run the pre-trained AlphaORACLE classifier](#run-pre-trained-classifier)
-  - [Train AlphaORACLE on user-defined custom networks](#generate-embeddings-from-user-custom-networks)
+  - [Run the pre-trained AlphaORACLE classifier](#run-the-pre-trained-alphaoracle-classifier)
+  - [Train AlphaORACLE on user-defined custom networks](#train-alphaoracle-on-user-defined-custom-networks)
 
 
 ## Introduction
@@ -188,7 +188,7 @@ Argument | Default | Description
 `plot_loss` | `true` | Whether to plot the model loss curves after training.
 `save_loss_data` | `false` | Whether to save the training loss data in a .tsv file.
 
-The `.` notation indicates a nested field, so `gat_shapes.dimension` (for example) in becomes
+The `.` notation indicates a nested field, so `gat_shapes.dimension` (for example) is denoted as follows in the config file:
 
 ```
 gat_shapes: {
@@ -196,4 +196,48 @@ gat_shapes: {
 }
 ```
 
-in the config file. An example config file can be found [here](https://github.com/anjali-nelliat/AlphaORACLE/blob/master/config/human_embeddings.json).
+An example config file can be found [here](https://github.com/anjali-nelliat/AlphaORACLE/blob/master/config/human_embeddings.json). All the input files used to generate AlphaORACLE yeast and human embeddings can be found in the `inputs/` folder in this repo.
+
+Once you've obtained protein embeddings from your networks, the next step is to train your classifer and perform bayesian optimization of hyperparameters with the command:
+```
+alphaoracle train train_classifier.json
+```
+where `train_classifier.json` is a config file. An example config file can be found [here](https://github.com/anjali-nelliat/AlphaORACLE/blob/master/config/train_classifier.json).
+The configuration keys are as follows:
+
+Argument | Default | Description
+--- | :---: | ---
+`ortholog_mapping_path` | `"Ortholog_mapping.csv"` | Path to yeast-human ortholog mapping file. If you're using different organisms include a corresponding ortholog mapping file.
+`human_embeddings_path` | `"human_features.csv"` | Path to human embeddings file.
+`yeast_embeddings_path` | `"yeast_features.csv"`  | Path to yeast embeddings file.
+`af_scores_path` | `None` | Path to CSV AlphaFold iptm file.
+`avg_n_models_path` | `None` | Path to CSV average models file.
+`training_data_path` | `None` | Path to CSV training data protein pairs.
+`n_trials` | `30` | Number of Optuna bayesian optimization trials.
+`timeout` | `7200` | Timeout in seconds for optimization.
+`epochs` | `30` | Maximum number of training epochs.
+`patience` | `10` | Early stopping patience. If validation AUC doesn't change within this number of epochs for each trial, the trial is stopped.
+`output_dir` | `"./alphaoracle_output"` | Directory to save outputs.
+`model_file` | `"optimized_interaction_classifier.pt"` | Filename for the optimized model to be saved.
+`study_file` | `"optuna_study.pkl"` | Filename for optimization study.
+`predictions_file` | `"optimized_test_predictions.csv"` | Filename for test predictions.
+`performance_plot` | `"model_performance.png"` | Filename for performance plot on test data.
+`human_dim` | `1024` | Dimension of human protein embeddings.
+`yeast_dim` | `512` | Dimension of yeast protein embeddings.
+`train_test_split_ratio` | `0.25` | Ratio for test:train data split.
+`train_val_split_ratio` | `0.25` | Ratio for validation:train data split.
+`random_seed` | `42` | Random seed for reproducibility.
+`optimization_history_plot` | `"optimization_history.png"` | Filename for optimization history plot.
+`param_importances_plot` | `"param_importances.png"` | Filename for parameter importances plot.
+`training_history_plot` | `"training_history.png"` | Filename for training history plot.
+
+The training data file supplied in `training_data_path` should have 3 columns ```Protein1,Protein2,Class```  where `Class` is `1` for a true positive PPI and `0` for a true negative PPI. For example:
+```
+Protein1,Protein2,Class
+P40227,Q9BUK6,1
+P50991,Q9BTY7,1
+```
+The other file formats are as described in the section [Run the pre-trained AlphaORACLE classifier](#run-the-pre-trained-alphaoracle-classifier). All the input files used to train AlphaORACLE can be found either in the `inputs/` folder in this repo or on [Google Drive](https://drive.google.com/drive/folders/16fARUVTF3G2r76Dt1vwI3bty4MWi_l0x?usp=drive_link)).
+
+Post-training, the classifier can be run as described in the previous section [Run the pre-trained AlphaORACLE classifier](#run-the-pre-trained-alphaoracle-classifier).
+
