@@ -162,3 +162,38 @@ P50991,Q9BTY7,0.985
 
 
 ### Train AlphaORACLE on user-defined custom networks
+To train the classifier on your own networks, first obtain the protein embeddings for the custom networks. For example:
+```
+alphaoracle embeddings human_embeddings.json
+```
+where `human_embeddings.json` is a config file which specifies the inputs to the command. 
+
+The configuration keys are as follows:
+
+Argument | Default | Description
+--- | :---: | ---
+`input_names` | `None` | A list of input network file paths.
+`output_name` | `None` | Path to output folder.
+`delimiter` | `" "`  | Column delimiter in input network files.
+`epochs` | `1000` | Number of training epochs.
+`batch_size` | `2048` | Number of proteins in each batch. Higher numbers result in faster training but also higher memory usage.
+`learning_rate` | `0.0005` | Learning rate. Higher learning rates result in faster convergence but run the risk of unstable training.
+`embedding_size` | `512` | Dimensionality of the learned integrated protein features.
+`neighbor_sample_size` | `2` | Size of neighborhoods to sample around each node for progressive GAT passes per training step.
+`gat_shapes.dimension` | `128` | Dimensionality of each individual GAT head.
+`gat_shapes.n_heads` | `10` | Number of attention heads for each network-specific GAT.
+`gat_shapes.n_layers` | `3` | Number of times each network is passed through its corresponding GAT. This number corresponds to the effective neighbourhood size of the convolution.
+`save_model` | `true` | Whether to save the trained model parameters and state.
+`pretrained_model_path` | `None` | Path to a pretrained model (.pt file) to load parameters from.
+`plot_loss` | `true` | Whether to plot the model loss curves after training.
+`save_loss_data` | `false` | Whether to save the training loss data in a .tsv file.
+
+The `.` notation indicates a nested field, so `gat_shapes.dimension` (for example) in becomes
+
+```
+gat_shapes: {
+    dimension: ${DIM_VALUE}
+}
+```
+
+in the config file. An example config file can be found [here](https://github.com/anjali-nelliat/AlphaORACLE/blob/master/config/human_embeddings.json).
